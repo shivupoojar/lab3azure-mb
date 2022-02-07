@@ -1,15 +1,20 @@
 <!doctype html>
 <title>Message board</title>
 
+
+<h3>There are {{ messages|length }} messages on the board.</h3>
+
+<h4> Here are the last 10:</h4>
+<ul>
+    {% for n in messages[-9:] %}
+        <li>
+            "{{n.content}}" <small>Posted on {{n.timestamp}}</small>
+        </li>
+    {% endfor %}
+</ul>
+
 <form action="/">
-    <label for="name">Your message:</label><br>
+    <label >Your message:</label><br>
     <input type="text" name="msg"><br>
     <input type="submit" value="Submit">
 </form>
-
-<h3>There are {{ messages|length }} messages on the board.</h3>
-<ul>
-    {% for n in messages %}
-    <li>{{n}}</li>
-    {% endfor %}
-</ul>
